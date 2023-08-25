@@ -27,9 +27,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
-
-
-
 /**
  *
  * @author Carlos Burgos
@@ -39,93 +36,82 @@ public class frmRegistrarse extends javax.swing.JFrame {
     /*
       Creates new form Registrarse
      */
-    
-    
-    public boolean isEmail (String correo){
+    public boolean isEmail(String correo) {
         Pattern pat = null;
         Matcher mat = null;
         pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
         mat = pat.matcher(correo);
-        if(mat.find()){
+        if (mat.find()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-   
-        
-      public boolean AgregarUsuario(){
-         try{
-         PreparedStatement addRegistrarse = SQLConexion.getConexion().prepareStatement("insert into tbEmpleados (usuario, correo_electronico, contraseña, idTipoUsuario) values (?,?,?,?)");
-         addRegistrarse.setString(1, txtNombreUsuario.getText());
-         addRegistrarse.setString(2, txtEmailUsuario.getText());
-         addRegistrarse.setString(3, Encrip.convertirSHA256(txtContraseñaUsuario.getText()));
-         addRegistrarse.setInt(4, cbTiposUsuarios.getSelectedIndex()+1);
-         addRegistrarse.executeUpdate();
-             System.out.println("Se ejecuta el metodo en el modelo");
-                 return true;
-         }
-         catch(SQLException ex){
-         System.out.println(ex.toString());
-         return false;
-         }
-      }
-      
-    
-    
-     public void init(){
-         
-             Login modeloLogin = new Login();
-            LoginAdmin modeloLoginAdmin = new LoginAdmin();
-            frmLogin vistaLogin = new frmLogin();
-            Registrarse modeloRegistrarse = new Registrarse(); // Crea una instancia del modelo Registrarse
-            frmRegistrarse vistaRegistrarse = new frmRegistrarse();  // Crea una instancia de la vista frmRegistrarse
-            ctrlLogin controladorLogin = new ctrlLogin(modeloLogin, modeloLoginAdmin, vistaLogin); // Crea una instancia del controlador para el formulario de login
-            ctrlRegistrarse controladorRegistrarse = new ctrlRegistrarse(modeloRegistrarse, vistaRegistrarse); // Crea una instancia del controlador para el formulario de registro
-            vistaLogin.setVisible(true); // Muestra el formulario de login al iniciar la aplicación
+    public boolean AgregarUsuario() {
+        try {
+            PreparedStatement addRegistrarse = SQLConexion.getConexion().prepareStatement("insert into tbEmpleados (usuario, correo_electronico, contraseña, idTipoUsuario) values (?,?,?,?)");
+            addRegistrarse.setString(1, txtNombreUsuario.getText());
+            addRegistrarse.setString(2, txtEmailUsuario.getText());
+            addRegistrarse.setString(3, Encrip.convertirSHA256(txtContraseñaUsuario.getText()));
+            addRegistrarse.setInt(4, cbTiposUsuarios.getSelectedIndex() + 1);
+            addRegistrarse.executeUpdate();
+            System.out.println("Se ejecuta el metodo en el modelo");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return false;
+        }
+    }
 
-            
-            
-           Registrarse regist = new Registrarse();
-        frmRegistrarse vista = new frmRegistrarse();
+    public void init() {
         
+
+        Login modeloLogin = new Login();
+        LoginAdmin modeloLoginAdmin = new LoginAdmin();
+        frmLogin vistaLogin = new frmLogin();
+        Registrarse modeloRegistrarse = new Registrarse(); // Crea una instancia del modelo Registrarse
+        frmRegistrarse vistaRegistrarse = new frmRegistrarse();  // Crea una instancia de la vista frmRegistrarse
+        ctrlLogin controladorLogin = new ctrlLogin(modeloLogin, modeloLoginAdmin, vistaLogin); // Crea una instancia del controlador para el formulario de login
+        ctrlRegistrarse controladorRegistrarse = new ctrlRegistrarse(modeloRegistrarse, vistaRegistrarse); // Crea una instancia del controlador para el formulario de registro
+        vistaLogin.setVisible(true); // Muestra el formulario de login al iniciar la aplicación
+
+        Registrarse regist = new Registrarse();
+        frmRegistrarse vista = new frmRegistrarse();
+
         //ctrlRegistrarse regis = new ctrlRegistrarse(regist , vista);
         System.out.println("Este es el metodo init");
-      
-        
+
         vista.setVisible(true);
-        
-        
-     }
-     
+
+    }
+
     public frmRegistrarse() {
         initComponents();
-        rsscalelabel.RSScaleLabel.setScaleLabel(txtFondo,"src/Imagenes/fondo_interfaces.png");
-          rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo,"src/Imagenes/logo.png");
-          
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtFondo, "src/Imagenes/fondo_interfaces.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Imagenes/logo.png");
+
         cbTiposUsuarios.removeAllItems();
         var tiposUsuarios = new ArrayList<TiposUsuarios>();
         ResultSet rs = null;
-        
-        try{
+
+        try {
             java.sql.Statement statement = SQLConexion.getConexion().createStatement();
 
             String query = "SELECT * FROM tbTipoUsuarios";
 
             rs = statement.executeQuery(query);
-            
-            while(rs.next()){
-                TiposUsuarios nuevoItem = new TiposUsuarios(rs.getInt("idTipoUsuario"),rs.getString("nombre_tipoUsuario"));
+
+            while (rs.next()) {
+                TiposUsuarios nuevoItem = new TiposUsuarios(rs.getInt("idTipoUsuario"), rs.getString("nombre_tipoUsuario"));
                 tiposUsuarios.add(nuevoItem);
             }
-            
-        }
-        catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
-        for(TiposUsuarios item : tiposUsuarios){
+
+        for (TiposUsuarios item : tiposUsuarios) {
             cbTiposUsuarios.addItem(item.getTipoUsuario());
         }
     }
@@ -250,21 +236,19 @@ public class frmRegistrarse extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseClicked
-         if(txtContraseñaUsuario.getText().isEmpty() || txtEmailUsuario.getText().isEmpty() || txtNombreUsuario.getText().isEmpty()){
-            JOptionPane. showMessageDialog(null,"Debe llenar los campos");
-         }
-         else{
-             AgregarUsuario();
-              JOptionPane.showMessageDialog(null,"El usuario ha sido registrado");
-         }
-           
-           
-            
-            
+        if (txtContraseñaUsuario.getText().isEmpty() || txtEmailUsuario.getText().isEmpty() || txtNombreUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+        } else {
+            AgregarUsuario();
+            JOptionPane.showMessageDialog(null, "El usuario ha sido registrado");
+        }
+
+
     }//GEN-LAST:event_btnRegistrarseMouseClicked
 
     private void txtLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLoginMouseClicked
-         Vista.frmLogin login = new Vista.frmLogin();
+        Vista.frmLogin login = new Vista.frmLogin();
+        login.InitLogin();
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_txtLoginMouseClicked
@@ -274,36 +258,35 @@ public class frmRegistrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarseMouseEntered
 
     private void txtEmailUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailUsuarioActionPerformed
-        
+
     }//GEN-LAST:event_txtEmailUsuarioActionPerformed
 
     private void txtEmailUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailUsuarioFocusGained
-        
+
     }//GEN-LAST:event_txtEmailUsuarioFocusGained
 
     private void txtEmailUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailUsuarioFocusLost
-         if(!isEmail(txtEmailUsuario.getText())){
+        if (!isEmail(txtEmailUsuario.getText())) {
             JOptionPane.showMessageDialog(null, "Ingresa un correo valido", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             txtEmailUsuario.requestFocus();
         }
-         
+
     }//GEN-LAST:event_txtEmailUsuarioFocusLost
 
     /**
      * @param args the command line arguments
      */
-   public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    // Resto del código
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        // Resto del código
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-                }
-    });
-}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+            }
+        });
+    }
 
-       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrarse;
@@ -321,4 +304,3 @@ public class frmRegistrarse extends javax.swing.JFrame {
     public javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }
-

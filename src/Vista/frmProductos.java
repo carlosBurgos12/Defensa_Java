@@ -18,6 +18,17 @@ public class frmProductos extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    public void Init(){
+    
+           Producto modeloProducto = new Producto();
+                frmProductos VistaCrud = new frmProductos();
+               ctrlProductos controlador = new ctrlProductos(modeloProducto, VistaCrud);
+               modeloProducto.mostrar(VistaCrud);
+               
+               VistaCrud.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +51,6 @@ public class frmProductos extends javax.swing.JFrame {
         btnAñadir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnMostrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
         btnLimpiar1 = new javax.swing.JButton();
@@ -103,7 +113,7 @@ public class frmProductos extends javax.swing.JFrame {
                 btnAñadirMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 120, 50));
+        jPanel1.add(btnAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 120, 50));
 
         btnEditar.setBackground(new java.awt.Color(153, 204, 0));
         btnEditar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -119,29 +129,23 @@ public class frmProductos extends javax.swing.JFrame {
                 btnEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 120, 50));
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, 50));
 
         btnEliminar.setBackground(new java.awt.Color(153, 204, 0));
         btnEliminar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 120, 50));
-
-        btnMostrar.setBackground(new java.awt.Color(153, 204, 0));
-        btnMostrar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        btnMostrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnMostrar.setText("Mostrar");
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 120, 50));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 120, 50));
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,7 +171,12 @@ public class frmProductos extends javax.swing.JFrame {
         btnLimpiar1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         btnLimpiar1.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar1.setText("Limpiar");
-        jPanel1.add(btnLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 120, 50));
+        btnLimpiar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLimpiar1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 120, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,14 +222,7 @@ public class frmProductos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tablaProductosMouseClicked
     
-    void mostrar(){
-        Producto modeloProducto = new Producto();
-                frmProductos VistaCrud = new frmProductos();
-               ctrlProductos controlador = new ctrlProductos(modeloProducto, VistaCrud);
-               modeloProducto.mostrar(VistaCrud);
-               
-               VistaCrud.setVisible(true);
-    }
+  
     
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         // TODO add your handling code here:
@@ -234,16 +236,25 @@ public class frmProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAñadirMouseClicked
 
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        mostrar();
-        dispose();
-    }//GEN-LAST:event_btnMostrarActionPerformed
-
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         
         
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnLimpiar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiar1MouseClicked
+        // TODO add your handling code here:
+        txtProducto.setText("");
+        txtCantidad.setText("");
+        txtDescripcion.setText("");
+        txtPrecio.setText("");
+        
+    }//GEN-LAST:event_btnLimpiar1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -279,12 +290,7 @@ public class frmProductos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-               Producto modeloProducto = new Producto();
-                frmProductos VistaCrud = new frmProductos();
-               ctrlProductos controlador = new ctrlProductos(modeloProducto, VistaCrud);
-               modeloProducto.mostrar(VistaCrud);
-               
-               VistaCrud.setVisible(true);
+            
             }
         });
     }
@@ -294,7 +300,6 @@ public class frmProductos extends javax.swing.JFrame {
     public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnLimpiar1;
-    public javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

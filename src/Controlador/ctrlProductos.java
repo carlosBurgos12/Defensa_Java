@@ -24,7 +24,7 @@ public class ctrlProductos implements ActionListener{
         this.vistaCrud.btnAñadir.addActionListener(this);
         this.vistaCrud.btnEditar.addActionListener(this);
          this.vistaCrud.btnEliminar.addActionListener(this);
-        this.vistaCrud.btnMostrar.addActionListener(this);
+       
     }
  
     @Override
@@ -63,19 +63,6 @@ public class ctrlProductos implements ActionListener{
             
              
         }
-             if(e.getSource() == vistaCrud.btnMostrar){
-           
-            vistaCrud.txtProducto.setText("");
-            vistaCrud.txtPrecio.setText("");
-            vistaCrud.txtCantidad.setText("");
-            vistaCrud.txtDescripcion.setText("");
-           
-           
-            modeloProducto.mostrar(vistaCrud);
-             
-        }
-        
-    
-        
+   
     }
 }

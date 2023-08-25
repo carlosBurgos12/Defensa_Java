@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
+import Controlador.ctrlProductos;
 import Vista.frmProductos;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
@@ -50,6 +51,8 @@ public class Producto {
         this.descripcion = descripcion;
     }
     
+
+     
     public void agregar(Producto modeloProducto){
 
         try {
@@ -97,6 +100,8 @@ public class Producto {
                 modelo.addRow(new Object[] {rs.getInt("idProducto") ,rs.getString("nombre_producto"),rs.getInt("precio"),rs.getInt("cantidad"), rs.getString("descripcion")});
 
             }
+            
+            
 
             
 

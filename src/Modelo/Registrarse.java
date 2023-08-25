@@ -2,7 +2,6 @@ package Modelo;
 
 
 
-import Vista.Inicio;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;

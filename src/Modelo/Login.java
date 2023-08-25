@@ -50,9 +50,9 @@ public class Login {
             ps.setString(2, Encrip.convertirSHA256(login.getContraseña()));
             res = ps.executeQuery();
             if (res.next()) {
-                     Inicio incio = new Inicio();
-         
+
                 System.out.println("Se encontro usuario");
+                
                   Inicio in = new Inicio();
                 in.setVisible(true);
                 return true;

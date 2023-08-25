@@ -195,12 +195,14 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnInventario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventario1ActionPerformed
         frmInventario inv = new frmInventario();
+        
        inv.setVisible(true);
     }//GEN-LAST:event_btnInventario1ActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         frmProductos pro = new frmProductos();
-        pro.setVisible(true);
+        pro.Init();
+       // pro.setVisible(true);
     }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadesActionPerformed
