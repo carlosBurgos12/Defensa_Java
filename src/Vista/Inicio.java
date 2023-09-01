@@ -56,6 +56,7 @@ public class Inicio extends javax.swing.JFrame {
         btnOrganizacion = new javax.swing.JButton();
         btnActividades = new javax.swing.JButton();
         jLabela1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -172,6 +173,9 @@ public class Inicio extends javax.swing.JFrame {
         jLabela1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/elemento1.png"))); // NOI18N
         jPanel1.add(jLabela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 670));
 
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -264,6 +268,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnInventario1;
     private javax.swing.JButton btnOrganizacion;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
