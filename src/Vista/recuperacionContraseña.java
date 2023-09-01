@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 
 
 public class recuperacionContraseña extends javax.swing.JFrame {
+    
+    
 
     //esto lo tengo que cambiar a algun correo qeu nosotros creemos
    private static String emailFrom = "oirsaoirsa@gmail.com";
@@ -30,6 +32,9 @@ public class recuperacionContraseña extends javax.swing.JFrame {
         
         rsscalelabel.RSScaleLabel.setScaleLabel(txtFondo,"src/Imagenes/fondo_interfas2.png");
           rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo,"src/Imagenes/logo.png");
+          
+           setLocationRelativeTo(null);
+
     }
     //esto es pa el codigo aleatorio no moveeer por faa
     public String generarCodigoAleatorio() {
