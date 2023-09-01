@@ -16,6 +16,9 @@ public class frmProductos extends javax.swing.JFrame {
     public frmProductos() {
         
         initComponents();
+        
+         setLocationRelativeTo(null);
+
     }
 
     

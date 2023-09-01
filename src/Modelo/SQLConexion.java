@@ -12,7 +12,7 @@ public class SQLConexion { // <- Editar por el nombre del archivo de la clase
     public static Connection getConexion(){
         
          //Cadena de conexión
-        String conexionUrl  = "jdbc:sqlserver://localhost:49905;" // <- Editar por su puerto de SQL
+        String conexionUrl  = "jdbc:sqlserver://localhost:62959;" // <- Editar por su puerto de SQL
                             + "databaseName=OIRSA_Expo;" // <- Editar por su base de datos
                             + "user=sa;"
                             + "password=itr2023;" 

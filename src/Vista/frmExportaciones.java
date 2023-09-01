@@ -15,6 +15,10 @@ public class frmExportaciones extends javax.swing.JFrame {
      */
     public frmExportaciones() {
         initComponents();
+        
+        
+         setLocationRelativeTo(null);
+
     }
 
     /**

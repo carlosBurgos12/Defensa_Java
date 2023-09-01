@@ -22,6 +22,9 @@ public class frmLogin extends javax.swing.JFrame {
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtImagenFondo,"src/Imagenes/fondo_interfaces.png");
           rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo,"src/Imagenes/logo.png");
+          
+           setLocationRelativeTo(null);
+
     }
     
     public void InitLogin(){

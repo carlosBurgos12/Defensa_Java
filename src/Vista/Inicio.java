@@ -22,7 +22,8 @@ public class Inicio extends javax.swing.JFrame {
           rsscalelabel.RSScaleLabel.setScaleLabel(jLabel6,"src/Imagenes/logo_productos.png");
                     rsscalelabel.RSScaleLabel.setScaleLabel(jLabel5,"src/Imagenes/logo_organizacion.png");
 
-
+                    
+                    setLocationRelativeTo(null);
 
 
     }
