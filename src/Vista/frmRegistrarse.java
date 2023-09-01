@@ -27,6 +27,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Carlos Burgos
@@ -50,6 +51,7 @@ public class frmRegistrarse extends javax.swing.JFrame {
 
     public boolean AgregarUsuario() {
         try {
+            System.out.println("agregar usuario");
             PreparedStatement addRegistrarse = SQLConexion.getConexion().prepareStatement("insert into tbEmpleados (usuario, correo_electronico, contraseña, idTipoUsuario) values (?,?,?,?)");
             addRegistrarse.setString(1, txtNombreUsuario.getText());
             addRegistrarse.setString(2, txtEmailUsuario.getText());
@@ -59,34 +61,34 @@ public class frmRegistrarse extends javax.swing.JFrame {
             System.out.println("Se ejecuta el metodo en el modelo");
             return true;
         } catch (SQLException ex) {
-            System.out.println(ex.toString());
+            System.out.println("ESTEE ES EL ERRRRROOOOOOOOOOOR"+ex.toString());
             return false;
         }
     }
 
     public void init() {
-        
 
         Login modeloLogin = new Login();
         LoginAdmin modeloLoginAdmin = new LoginAdmin();
-        frmLogin vistaLogin = new frmLogin();
         Registrarse modeloRegistrarse = new Registrarse(); // Crea una instancia del modelo Registrarse
         frmRegistrarse vistaRegistrarse = new frmRegistrarse();  // Crea una instancia de la vista frmRegistrarse
-        ctrlLogin controladorLogin = new ctrlLogin(modeloLogin, modeloLoginAdmin, vistaLogin); // Crea una instancia del controlador para el formulario de login
+         // Crea una instancia del controlador para el formulario de login
         ctrlRegistrarse controladorRegistrarse = new ctrlRegistrarse(modeloRegistrarse, vistaRegistrarse); // Crea una instancia del controlador para el formulario de registro
-        vistaLogin.setVisible(true); // Muestra el formulario de login al iniciar la aplicación
+        
 
         Registrarse regist = new Registrarse();
         frmRegistrarse vista = new frmRegistrarse();
 
         //ctrlRegistrarse regis = new ctrlRegistrarse(regist , vista);
         System.out.println("Este es el metodo init");
+        System.out.println("metodo init registrarse");
 
         vista.setVisible(true);
 
     }
 
     public frmRegistrarse() {
+        System.out.println("Tipo usuario");
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtFondo, "src/Imagenes/fondo_interfaces.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Imagenes/logo.png");
@@ -240,16 +242,23 @@ public class frmRegistrarse extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos");
         } else {
             AgregarUsuario();
+               Vista.frmLogin login = new Vista.frmLogin();
+                login.InitLogin();
+                 dispose();
+            
             JOptionPane.showMessageDialog(null, "El usuario ha sido registrado");
+            
+          
+            
         }
 
 
+      
     }//GEN-LAST:event_btnRegistrarseMouseClicked
 
     private void txtLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLoginMouseClicked
         Vista.frmLogin login = new Vista.frmLogin();
         login.InitLogin();
-        login.setVisible(true);
         dispose();
     }//GEN-LAST:event_txtLoginMouseClicked
 
