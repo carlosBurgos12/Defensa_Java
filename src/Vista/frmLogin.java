@@ -10,6 +10,7 @@ import Modelo.LoginAdmin;
 import Vista.frmRegistrarse;
 import Modelo.Registrarse;
 import Vista.recuperacionContraseña;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +34,7 @@ public class frmLogin extends javax.swing.JFrame {
                 LoginAdmin modeloLoginAdmin = new LoginAdmin();
                 ctrlLogin controlador = new ctrlLogin(modeloLogin, modeloLoginAdmin, frmLogin);
                 
+              
                frmLogin.setVisible(true);
     }
 
@@ -142,7 +144,34 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRecuperacionContraseñasMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-
+        try{
+        LoginAdmin Login = new LoginAdmin();
+        Login.setUsuario(txtUsuario.getText());
+        Login.setPassword(txtContraseña.getText());
+        
+        
+        Login log = new Login();
+        log.setNombre(txtUsuario.getText());
+        log.setContraseña(txtContraseña.getText());
+        
+        
+        if(Login.Iniciar(Login)==true){
+            InicioAdmin ini = new InicioAdmin();
+            ini.setVisible(true);
+            dispose();
+            return;
+        }
+        else if(log.Iniciar(log)== true)
+        {
+            Inicio inic = new Inicio();
+            inic.setVisible(true);
+            dispose();
+        }
+    
+        }
+        catch(Exception ex){
+                        JOptionPane.showMessageDialog(null, "No existe el usuario");
+        }
     }//GEN-LAST:event_btnIngresarMouseClicked
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
