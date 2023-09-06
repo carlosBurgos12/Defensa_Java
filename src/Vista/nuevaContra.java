@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import Modelo.SQLConexion;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author deleo
@@ -16,6 +19,7 @@ public class nuevaContra extends javax.swing.JFrame {
     public nuevaContra() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,11 +90,13 @@ public class nuevaContra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNuevaContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevaContraActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtNuevaContraActionPerformed
 
     private void btnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseClicked
 
+        
+        
         insertarCodigo insertCo = new insertarCodigo();
         insertCo.setVisible(true);
         dispose();
